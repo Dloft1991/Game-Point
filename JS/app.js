@@ -60,10 +60,20 @@ btnLogin.addEventListener('click', e => {
         document.getElementById("btnSignOut").hidden = false;
         document.getElementById("txtEmail").value='';
         document.getElementById("txtPassword").value='';
+        document.getElementById("btnLogin").hidden = true;
+        document.getElementById("btnSignUp").hidden = true;
+        document.getElementById("txtEmail").hidden = true;
+        document.getElementById("txtPassword").hidden = true;
+        document.getElementById("profile").hidden = false;
+
     } else {
         console.log("not logged in");
         // btnSignOut.classList.add("hide");
         document.getElementById("btnSignOut").hidden = true;
-        event.preventDefault();
+        document.getElementById("btnLogin").hidden = false;
+        document.getElementById("btnSignUp").hidden = false;
+        document.getElementById("txtEmail").hidden = false;
+        document.getElementById("txtPassword").hidden = false;
+        document.getElementById("profile").hidden = true;
     }
     });

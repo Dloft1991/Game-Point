@@ -24,11 +24,11 @@ btnLogin.addEventListener('click', e => {
     const email = txtEmail.value;
     const pass = txtPassword.value;
     console.log("Signed In");
-    
-
+   
     //Sign in
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.catch(e => console.log(e.message));
+    
     
 });
 
@@ -40,14 +40,17 @@ btnLogin.addEventListener('click', e => {
         const pass = txtPassword.value;
         const auth = firebase.auth();
         console.log("Signed Up");
+        
     
         //Sign in
         const promise = auth.createUserWithEmailAndPassword(email, pass);
         promise.catch(e => console.log(e.message));
+        
     });
 
     btnSignOut.addEventListener('click', e => {
         firebase.auth().signOut();
+        
     });
 
     firebase.auth().onAuthStateChanged(firebaseUser => {

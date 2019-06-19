@@ -1,61 +1,61 @@
-(function(){
+
 // Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyCeW-gE5hhyCAbmLXKV9gHiDS40imlf1ys",
-    authDomain: "gamepoint-677f1.firebaseapp.com",
-    databaseURL: "https://gamepoint-677f1.firebaseio.com",
-    projectId: "gamepoint-677f1",
-    storageBucket: "gamepoint-677f1.appspot.com",
-    messagingSenderId: "1047445270506",
-    appId: "1:1047445270506:web:f611ca3ff7f5cfc5"
+var config = {
+    apiKey: "AIzaSyBCxWHPFt6Cy0vSRMHeRt4cpxup-MZ7mAk",
+    authDomain: "gamepoint-a3bee.firebaseapp.com",
+    databaseURL: "https://gamepoint-a3bee.firebaseio.com",
+    projectId: "gamepoint-a3bee",
+    storageBucket: "gamepoint-a3bee.appspot.com",
+    messagingSenderId: "977653430582",
+    appId: "1:977653430582:web:269971e392c4823d"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(config);
 
 //Get elements
-const textEmail = document.getElementById("textEmail");
-const textPassword = document.getElementById("textPassword");
-const signIn = document.getElementById("signIn");
-const signOut = document.getElementById("signOut");
-const createAccount = document.getElementById("createAccount");
+const txtEmail = document.getElementById("txtEmail");
+const txtPassword = document.getElementById("txtPassword");
+const btnLogin = document.getElementById("btnLogin");
+const btnSignOut = document.getElementById("btnSignOut");
+const btnSignUp = document.getElementById("btnSignUp");
+const auth = firebase.auth();
 
-
-signIn.addEventListener('click', e => {
-    const email = textEmail.value;
-    const pass = textPassword.value;
-    const auth = firebase.auth();
+btnLogin.addEventListener('click', e => {
+    const email = txtEmail.value;
+    const pass = txtPassword.value;
+    console.log("Signed In");
+    
 
     //Sign in
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.catch(e => console.log(e.message));
+    
 });
 
 //Add signup Event
 
-    createAccount.addEventListener('click', e => {
+    btnSignUp.addEventListener('click', e => {
         //TODO: check for real email
-        const email = textEmail.value;
-        const pass = textPassword.value;
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
         const auth = firebase.auth();
+        console.log("Signed Up");
     
         //Sign in
         const promise = auth.createUserWithEmailAndPassword(email, pass);
         promise.catch(e => console.log(e.message));
     });
 
-    signOut.addEventListener('click', e => {
+    btnSignOut.addEventListener('click', e => {
         firebase.auth().signOut();
     });
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
-        signOut.classList.remove("hide");
+        btnSignOut.classList.remove("hide");
     } else {
         console.log("not logged in");
-        signOut.classList.add("hide");
+        btnSignOut.classList.add("hide");
     }
     });
-
-}());
-

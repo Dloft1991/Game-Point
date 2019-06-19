@@ -56,9 +56,14 @@ btnLogin.addEventListener('click', e => {
     firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
-        btnSignOut.classList.remove("hide");
+        // btnSignOut.classList.remove("hide");
+        document.getElementById("btnSignOut").hidden = false;
+        document.getElementById("txtEmail").value='';
+        document.getElementById("txtPassword").value='';
     } else {
         console.log("not logged in");
-        btnSignOut.classList.add("hide");
+        // btnSignOut.classList.add("hide");
+        document.getElementById("btnSignOut").hidden = true;
+        event.preventDefault();
     }
     });
